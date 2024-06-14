@@ -23,7 +23,7 @@ for key, value in ports.items():
     
 laser = ydlidar.CYdLidar();
 laser.setlidaropt(ydlidar.LidarPropSerialPort, port);
-laser.setlidaropt(ydlidar.LidarPropSerialBaudrate, 230400)
+laser.setlidaropt(ydlidar.LidarPropSerialBaudrate, 128000) #for X2=115200 X4=128000
 laser.setlidaropt(ydlidar.LidarPropLidarType, ydlidar.TYPE_TRIANGLE);
 laser.setlidaropt(ydlidar.LidarPropDeviceType, ydlidar.YDLIDAR_TYPE_SERIAL);
 laser.setlidaropt(ydlidar.LidarPropScanFrequency, 10.0);
