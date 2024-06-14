@@ -25,7 +25,10 @@ if __name__ == "__main__":
         while ret and ydlidar.os_isOk() :
             r = laser.doProcessSimple(scan);
             if r:
-                print("Scan received[",scan.stamp,"]:",scan.points.size(),"ranges is [",1.0/scan.config.scan_time,"]Hz");
+                if scan.config.scan_time > 0:
+                    print("Scan received[",scan.stamp,"]:",scan.points.size(),"ranges is [",1.0/scan.config.scan_time,"]Hz");
+                else:
+                    print("Scan received[",scan.stamp,"]:",scan.points.size(),"but scan_time is zero, cannot compute frequency");
             else :
                 print("Failed to get Lidar Data.")
             time.sleep(0.05);
