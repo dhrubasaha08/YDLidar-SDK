@@ -6,9 +6,9 @@
 * [4. Build in VSCode](#build-in-visual-studio-code)
 
 ## Install CMake
-The installation procedures in Ubuntu 18.04/16.04/14.04 LTS and Windows 7/10 are shown here as examples. For Ubuntu 18.04/16.04/14.04 32-bit LTS and Mac, you can get it in [YDLidar-SDK wiki](https://github.com/YDLIDAR/YDLidar-SDK/wiki).
+The installation procedures in Ubuntu 22.04 LTS is shown here as examples.
 YDLidar SDK requires [CMake 2.8.2+](https://cmake.org/) as dependencies. 
-### Ubuntu 22.04/18.04/16.04/14.04 LTS
+### Ubuntu 22.04 LTS
 You can install these packages using apt:
 ```shell
 sudo apt install cmake pkg-config
@@ -18,24 +18,12 @@ if you want to use python API, you need to install python and swig(3.0 or higher
 sudo apt-get install python3 swig
 sudo apt-get install python3-pip
 ```
-### Windows 7/10
-[vcpkg](https://github.com/Microsoft/vcpkg) is recommended for building the dependency libraries as follows:
-For the 32-bit project:
-```
-.\vcpkg install cmake
-.\vcpkg integrate install
-```
-For the 64-bit project:
-```
-.\vcpkg install cmake:x64-windows
-.\vcpkg integrate install
-```
 if you want to use python API, you need to install python and swig:
 [python office install](https://wiki.python.org/moin/BeginnersGuide/Download)
 [swig office install](http://www.swig.org/download.html)
 
 ## Build YDLidar-SDK
-### Ubuntu 18.04/16.04/14.04 LTS
+### Ubuntu 22.04 LTS
 In the YDLidar SDK directory, run the following commands to compile the project:
 ```
 git clone https://github.com/YDLIDAR/YDLidar-SDK.git
@@ -58,33 +46,6 @@ pip install .
 python setup.py build
 python setup.py install
 ```
-
-### Windows 7/10
-Then, in the YDLidar SDK directory, run the following commands to create the Visual Studio solution file. Please replace [vcpkgroot] with your vcpkg installation path.
-Generate the 32-bit project:
-```
-cd build && \
-cmake .. "-DCMAKE_TOOLCHAIN_FILE=[vcpkgroot]\scripts\buildsystems\vcpkg.cmake"
-```
-Generate the 64-bit project:
-```
-cd build && \
-cmake .. -G "Visual Studio 15 2017 Win64" "-DCMAKE_TOOLCHAIN_FILE=[vcpkgroot]\scripts\buildsystems\vcpkg.cmake"
-```
-Note:
-* For build C# API, set BUILD_CSHARP option to ON.
-* You need to install [Swig](http://www.swig.org/download.html), When building C# API.
-eg:
-```
-  cmake -DBUILD_CSHARP=ON .. -G "Visual Studio 15 2017 Win64" "-DCMAKE_TOOLCHAIN_FILE=[vcpkgroot]\scripts\buildsystems\vcpkg.cmake"
-```
-
-#### Compile YDLidar SDK
-You can now compile the YDLidar SDK in Visual Studio.
-Note: 
-* For more windows build and Run, Please refer to [How to gerenrate Vs Project by CMake](how_to_gerenrate_vs_project_by_cmake.md)
-* For VS2017 or higher, Please refer to [CMake projects in visual studio](https://docs.microsoft.com/zh-cn/cpp/build/cmake-projects-in-visual-studio?view=vs-2019)
-
 ### Packaging Project
 ```
 cpack
@@ -96,13 +57,11 @@ Three samples are provided in samples, which demonstrate how to configure YDLida
 
 ![](images/sequence.png)
 
-### Ubuntu 18.04/16.04 /14.04 LTS
-For Ubuntun 18.04/16.04/14.04 LTS, run the *tri_test* if connect with the Triangle LiDAR unit(s) or TOF LiDAR unit(s):
+### Ubuntu 22.04 LTS
+For Ubuntun 22.04 LTS, run the *tri_test* if connect with the Triangle LiDAR unit(s) or TOF LiDAR unit(s):
 ```
 ./tri_test
 ```
-### Windows 7/10
-After compiling the YDLidar SDK as shown in section 4.1.2, you can find `tri_test.exe` in the {YDLidar-SDK}\build\Debug or {YDLidar-SDK}\build\Release folder, respectively, which can be run directly.
 
 Then you can see SDK initializing the information as below:
 
